@@ -1,7 +1,5 @@
 ApiServer = require 'apiserver'
-
-config =
-  port: 3000
+config = require 'config'
 
 apiserver = new ApiServer()
 port = process.env.PORT || config.port
@@ -17,3 +15,20 @@ onListen = (err) ->
 
 onClose = () -> console.log "port unbound correctly"
 
+twitter = require 'ntwitter'
+twit = new twitter config.twitter
+
+getbb = (lat, lon) ->
+  "#{lon-0.1},#{lat-0.1},#{lon+0.1},#{lat+0.1}"
+
+filter =
+  'locations': getbb config.location.lat, config.location.lon
+
+console.log filter
+
+tweets = []
+
+twit.stream 'statuses/filter', filter, (stream) ->
+  stream.on 'data', (data) ->
+        console.log data.coordinates, data.created_at, data.text
+        tweets.push data
