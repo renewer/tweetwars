@@ -1,0 +1,16 @@
+{
+  "author": "Florian Rathgeber <florian.rathgeber@gmail.com> (https://github.com/kynan)",
+  "name": "tweetwars",
+  "description": "Two hastags battle it out",
+  "version": "0.0.0",
+  "homepage": "https://github.com/renewer/tweetwars",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/renewer/tweetwars.git"
+  },
+  "engines": {
+    "node": "~0.6.17"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
